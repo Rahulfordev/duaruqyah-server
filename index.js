@@ -5,7 +5,7 @@ require("dotenv").config();
 const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 // Middleware for parsing request bodies
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -103,7 +103,6 @@ app.get("/api/duas/:id", (req, res) => {
 
 app.get("/api/duas/cat_id/:id", (req, res) => {
   const { id: cat_id } = req.params;
-  console.log(cat_id);
   db.all("SELECT * FROM dua WHERE cat_id = ?", [cat_id], (err, row) => {
     if (err) {
       console.error("Error fetching dua:", err.message);
